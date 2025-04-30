@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MyHomePage homePage=MyHomePage(title: 'CALCULATOR');
+    MyHomePage homePage=MyHomePage(title: 'Login page');
     return MaterialApp(
-      title: 'Calculator',
+      title: 'SLSF2',
       color: Colors.white,
       home: homePage,
 
@@ -39,43 +40,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController num1 = TextEditingController();
-  TextEditingController num2 = TextEditingController();
-  String result = '';
-  void add() {
-    double n1 = double.tryParse(num1.text) ?? 0.0;
-    double n2 = double.tryParse(num2.text) ?? 0.0;
-    setState(() {
-      result = (n1 + n2).toString();
-    });
-  }
-  void subtract() {
-    double n1 = double.tryParse(num1.text) ?? 0.0;
-    double n2 = double.tryParse(num2.text) ?? 0.0;
-    setState(() {
-      result = (n1 - n2).toString();
-    });
-  }
-  void multiply() {
-    double n1 = double.tryParse(num1.text) ?? 0.0;
-    double n2 = double.tryParse(num2.text) ?? 0.0;
-    setState(() {
-      result = (n1 * n2).toString();
-    });
-  }
-  void division() {
-    double n1 = double.tryParse(num1.text) ?? 0.0;
-    double n2 = double.tryParse(num2.text) ?? 0.0;
-    setState(() {
-      result = (n1 / n2).toString();
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
-
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        title: Text('CALCULATOR'),
+        title: Text('LOGIN PAGE'),
         backgroundColor: Colors.black45,
       ),
       body: Center(
@@ -85,71 +61,44 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 500.0,
           height: 550.0,
           child: GridView.count(
-            crossAxisCount: 1,
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      child: Text('CALCULATOR',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0, color: Colors.white)),
-                    ),
-                    Container(
-                      width: 200.0,
-                      height: 50.0,
-                      child: TextField(
-                        controller: num1,
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(labelText: 'Enter value of a', border: OutlineInputBorder()),
+              crossAxisCount: 1,
+              children: [
+                Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        child: Text('LOGIN',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0, decoration: TextDecoration.underline)),
                       ),
-                    ),
-                    Container(
-                      width: 200.0,
-                      height: 50.0,
-                      child: TextField(
-                        controller: num2,
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(labelText: 'Enter value of b', border: OutlineInputBorder()),
-                      ),
-                    ),
-                    Container(
-                      width: 100.0,
-                      height: 40.0,
-                      child: Center(
-                        child: Text(result, style: TextStyle(fontSize: 25.0, color: Colors.white)),
-                      ),
-                    ),
-                    Container(
-                        width: 250.0,
+                      Container(
+                        width: 200.0,
                         height: 50.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              child: ElevatedButton(onPressed: add, child: Text('+')),
-                            ),
-                            Container(
-                              child: ElevatedButton(onPressed: subtract, child: Text('-')),
-                            ),
-                            Container(
-                              child: ElevatedButton(onPressed: multiply, child: Text('*')),
-                            ),
-                            Container(
-                              child: ElevatedButton(onPressed: division, child: Text('/')),
-                            ),
-                          ],
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(labelText: 'Enter Username', icon: Icon(Icons.email), border: OutlineInputBorder()),
                         ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      ),
+                      Container(
+                        width: 200.0,
+                        height: 50.0,
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(labelText: 'Enter Password',icon: Icon(Icons.password), border: OutlineInputBorder()),
+                        ),
+                      ),
+                      Container(
+                        width: 200.0,
+                        height: 50.0,
+                        child: ElevatedButton(onPressed: ()=>{}, child: Text('Submit'))
+                      ),
+                    ],
+                  ),
+                )
+              ],
           ),
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
