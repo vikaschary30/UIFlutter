@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigation/Page1.dart';
-import 'package:navigation/Page2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,22 +12,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Index Page',
-      home: Index(),
+      home: Page1(),
     );
   }
 }
 
-class Index extends StatefulWidget{
-  const Index({super.key});
+class Page1 extends StatefulWidget{
+  const Page1({super.key});
   @override
-  State<Index> createState() => _Index();
+  State<Page1> createState() => _Page1();
 }
 
-class _Index extends State<Index> {
+class _Page1 extends State<Page1> {
   @override
   Widget build(BuildContext i){
     return Scaffold(
-      appBar: AppBar(title: Text('INDEX PAGE'),),
+      appBar: AppBar(title: Text('PAGE1'),),
       body: Center(
         child: SizedBox(
           height: 600.0,
@@ -38,19 +36,12 @@ class _Index extends State<Index> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(
-                child: ElevatedButton(onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Page1()),
-                  );
-
-                }, child: Text('Button 1')),
+                child: Text('Navigated to first page'),
               ),
               SizedBox(
                 child: ElevatedButton(onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Page2()),
-                  );
-                }, child: Text('Button 2')),
+                  Navigator.of(context).pop();
+                }, child: Text('Back to index page')),
               ),
             ],
           ),
@@ -59,6 +50,3 @@ class _Index extends State<Index> {
     );
   }
 }
-
-
-
